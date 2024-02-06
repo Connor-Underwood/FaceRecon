@@ -1,0 +1,5 @@
+cv.cvtColor(frame, cv.COLOR_BGR2GRAY ) changes color of frame/image
+
+
+cv.resize(frame, tuple: dimensions, interpolation={INTER_LINEAR: zoom, INTER_AREA: shrink}) resizes frame
+

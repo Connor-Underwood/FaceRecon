@@ -6,6 +6,10 @@ import numpy as np
 
 image = cv.imread(cv.samples.findFile('../images/connor_boba.jpg'))
 
+print(dir(image))
+print(image.shape)
+
+
 if image is None:
 	print("cant read image")
 	
