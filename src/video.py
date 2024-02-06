@@ -23,16 +23,23 @@ if video == None:
 
 while True:
     # read() returns 1) a boolean if the frame was read or not and 2) the actual frame object
-    readFrame, frame = video.read()
+    try:
+        readFrame, frame = video.read()
+    except:
+        print("frame not found")
 
-    frame_new = rescaleFrame(frame)
+    if not readFrame:
+        print("frame not read")
+
+
+    frame_resized = rescaleFrame(frame)
     gray_scale =cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
 
     # Show the actual frame on a display called 'Video'
     cv.imshow('Video', frame)
 
     #Testing out rescaleFrame
-    # cv.imshow('Video Resized', frame_new)
+    cv.imshow('Video Resized', frame_resized)
 
     cv.imshow('GrayScale', gray_scale)
 
