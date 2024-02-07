@@ -3,3 +3,17 @@ cv.cvtColor(frame, cv.COLOR_BGR2GRAY ) changes color of frame/image
 
 cv.resize(frame, tuple: dimensions, interpolation={INTER_LINEAR: zoom, INTER_AREA: shrink}) resizes frame
 
+
+cv.Canny(img, min, max) returns all edges in a frame that are above maxVal and below minVal
+
+cv.warpAffine(img, translationMat, dimensions) returns a frame that is adjusted by translationMat (if rotationMatrix applied it will rotate)
+
+cv.getRotationMatrix2D(rotPoint, angle, scale=1.0) returns a rotated matrix
+
+
+
+
+
+
+
+

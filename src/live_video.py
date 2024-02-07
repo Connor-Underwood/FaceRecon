@@ -1,4 +1,4 @@
-#!/home/underw23/anaconda3/bin/python3
+#!/Users/connorunderwood/anaconda3/bin/python3
 
 import numpy as np
 import cv2 as cv
@@ -12,16 +12,32 @@ def rescaleFrame(frame, scale=.75):
     return cv.resize(frame, dimensions, interpolation=cv.INTER_AREA)
 
 
+def rotateFrame(img, angle, rotPoint=None):
+  
+  (width,height) = img.shape[:2]
+
+  if not rotPoint:
+    rotPoint = (width//2, height//2)
+
+  rotationMatrix = cv.getRotationMatrix2D(rotPoint, angle, 1.0)
+  dimensions = (width,height)
+  return cv.warpAffine(img, rotationMatrix, dimensions)
+  	
+
+
+
+
+  
+
 
 # Returns a VideoCapture Object
-video = cv.VideoCapture("../videos/connor_smol.mp4")
-
+video = cv.VideoCapture(0)
 
 
 if video == None:
     print("video not found")
 
-while True:
+while video.isOpened():
     # read() returns 1) a boolean if the frame was read or not and 2) the actual frame object
     try:
         readFrame, frame = video.read()
@@ -43,10 +59,19 @@ while True:
     # edge cascading
     canny = cv.Canny(frame, 125, 175)
 
-    cv.imshow("Canny Edge Detection", canny)
+    # rotating a frame
+    rotated = rotateFrame(frame, -180)
+
+    # thresholding a frame
+    ret, thresh = cv.threshold(gray_scale,125, 255, cv.THRESH_BINARY)
+    cv.imshow('Threshold frame', thresh)
+    
+    #cv.imshow('Rotated Frames', rotated)
+
+    #cv.imshow("Canny Edge Detection", canny)
 
     # Show the actual frame on a display called 'Video'
-    cv.imshow('Video', frame)
+    #cv.imshow('Video', frame)
 
     #Testing out rescaleFrame
     #cv.imshow('Video Resized', frame_resized)
