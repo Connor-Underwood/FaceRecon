@@ -31,7 +31,7 @@ def rotateFrame(img, angle, rotPoint=None):
 
 
 # Returns a VideoCapture Object
-video = cv.VideoCapture(0)
+video = cv.VideoCapture(1)
 
 
 if video == None:
