@@ -26,7 +26,7 @@ while video.isOpened():
 
   gray_scale = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
   
-  faces = face_cascade.detectMultiScale(frame, scaleFactor=1.1, minNeighbors=3)
+  faces = face_cascade.detectMultiScale(frame, scaleFactor=5, minNeighbors=3)
 
 
   for (x,y,w,h) in faces:
